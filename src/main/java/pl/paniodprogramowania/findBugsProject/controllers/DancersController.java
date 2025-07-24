@@ -1,14 +1,12 @@
 package pl.paniodprogramowania.findBugsProject.controllers;
 
 import jakarta.validation.Valid;
-import java.io.IOException;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +15,6 @@ import pl.paniodprogramowania.findBugsProject.controllers.dtos.DancerResponse;
 import pl.paniodprogramowania.findBugsProject.controllers.dtos.DancerSavedResponse;
 import pl.paniodprogramowania.findBugsProject.controllers.dtos.NewDancerRequest;
 import pl.paniodprogramowania.findBugsProject.mapstruct.DancerMapper;
-import pl.paniodprogramowania.findBugsProject.retrofit.GithubService;
 import pl.paniodprogramowania.findBugsProject.services.DancerService;
 
 @Slf4j
@@ -26,15 +23,12 @@ import pl.paniodprogramowania.findBugsProject.services.DancerService;
 public class DancersController {
 
   private final DancerService dancerService;
-  private final GithubService githubService;
   private final DancerMapper dancerMapper;
 
   public DancersController(
       @Autowired DancerService dancerService,
-      @Autowired GithubService githubService,
       @Autowired DancerMapper dancerMapper) {
     this.dancerService = dancerService;
-    this.githubService = githubService;
     this.dancerMapper = dancerMapper;
   }
 
@@ -52,31 +46,12 @@ public class DancersController {
   }
 
   @GetMapping(path = "/dancers")
-  public ResponseEntity<List<DancerResponse>> getAllDancers(
-  ) {
-    var dancers =  dancerService.returnAllDancers().stream()
+  public ResponseEntity<List<DancerResponse>> getAllDancers() {
+    var dancers = dancerService.returnAllDancers().stream()
         .map(dancerMapper::toDancerResponse)
         .toList();
     return new ResponseEntity<>(
         dancers,
-        HttpStatus.OK
-    );
-  }
-
-  @GetMapping(path = "/users")
-  public ResponseEntity<String> getAll(
-  ) throws IOException {
-
-    return new ResponseEntity<>(
-        githubService.getAllUsers(),
-        HttpStatus.OK
-    );
-  }
-
-  @GetMapping(path = "/users/{username}")
-  public ResponseEntity<String> getAll(@PathVariable("username") String username) throws IOException {
-    return new ResponseEntity<>(
-        githubService.getOneUser(username),
         HttpStatus.OK
     );
   }

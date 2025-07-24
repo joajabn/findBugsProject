@@ -11,7 +11,6 @@ public class GithubService {
     this.githubApi = githubApi;
   }
 
-
   public String getAllUsers() {
     try {
       return githubApi.getAllUsers().execute().body().get("login").getAsString();

@@ -10,7 +10,7 @@ import pl.paniodprogramowania.findBugsProject.model.Dancer;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-07-21T15:56:37+0200",
+    date = "2025-07-24T16:22:24+0200",
     comments = "version: 1.6.3, compiler: javac, environment: Java 23.0.2 (Homebrew)"
 )
 @Component

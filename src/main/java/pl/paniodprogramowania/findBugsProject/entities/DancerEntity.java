@@ -3,6 +3,8 @@ package pl.paniodprogramowania.findBugsProject.entities;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +17,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.paniodprogramowania.findBugsProject.controllers.dtos.PreferredDance;
 
 @Entity
 @Table(name = "dancers")
@@ -34,6 +37,10 @@ public class DancerEntity {
 
     @Column
     private String lastName;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private PreferredDance preferredDance;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "primaballerina")
     private List<DancePlayEntity> dancePlays;

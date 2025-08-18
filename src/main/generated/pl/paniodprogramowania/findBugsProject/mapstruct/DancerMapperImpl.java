@@ -10,7 +10,7 @@ import pl.paniodprogramowania.findBugsProject.model.Dancer;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-08-17T18:46:52+0200",
+    date = "2025-08-18T16:59:18+0200",
     comments = "version: 1.6.3, compiler: javac, environment: Java 23.0.2 (Homebrew)"
 )
 @Component
@@ -29,6 +29,7 @@ public class DancerMapperImpl implements DancerMapper {
         }
         dancer.firstName( dancerDocument.getFirstName() );
         dancer.lastName( dancerDocument.getLastName() );
+        dancer.preferredDance( dancerDocument.getPreferredDance() );
 
         return dancer.build();
     }
@@ -59,6 +60,7 @@ public class DancerMapperImpl implements DancerMapper {
         dancerResponse.id( dancerDocument.id() );
         dancerResponse.firstName( dancerDocument.firstName() );
         dancerResponse.lastName( dancerDocument.lastName() );
+        dancerResponse.preferredDance( dancerDocument.preferredDance() );
 
         return dancerResponse.build();
     }

@@ -18,7 +18,9 @@ public interface DancerMapper {
       {
           @Mapping(source = "dancerId", target = "id"),
           @Mapping(source = "firstName", target = "firstName"),
-          @Mapping(source = "lastName", target = "lastName")
+          @Mapping(source = "lastName", target = "lastName"),
+          @Mapping(source = "preferredDance", target = "preferredDance")
+
       })
   Dancer toDancer(DancerEntity dancerDocument);
 
@@ -34,10 +36,10 @@ public interface DancerMapper {
       {
           @Mapping(source = "id", target = "id"),
           @Mapping(source = "firstName", target = "firstName"),
-          @Mapping(source = "lastName", target = "lastName")
+          @Mapping(source = "lastName", target = "lastName"),
+          @Mapping(source = "preferredDance", target = "preferredDance")
       })
   DancerResponse toDancerResponse(Dancer dancerDocument);
-
 
 }
 

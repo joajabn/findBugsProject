@@ -12,7 +12,7 @@ public class RetrofitConfiguration {
   public GithubApi githubApi(){
     Retrofit retrofit = new Retrofit.Builder()
         .baseUrl("https://api.github.com/")
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create()) //zamienia json na klasy
         .build();
 
     return retrofit.create(GithubApi.class);

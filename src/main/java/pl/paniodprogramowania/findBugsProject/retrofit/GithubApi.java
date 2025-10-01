@@ -5,9 +5,11 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
+import java.util.List;
+
 public interface GithubApi {
-  @GET("users/PaniOdProgramowania")
-  public Call<JsonObject> getAllUsers();
+  @GET("users")
+  public Call<List<JsonObject>> getAllUsers();
 
   @GET("users/{username}")
   public Call<JsonObject> getUser(@Path("username") String username);

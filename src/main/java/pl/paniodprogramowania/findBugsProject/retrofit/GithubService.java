@@ -1,6 +1,10 @@
 package pl.paniodprogramowania.findBugsProject.retrofit;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.google.gson.JsonObject;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,13 +15,17 @@ public class GithubService {
     this.githubApi = githubApi;
   }
 
-  public String getAllUsers() {
+  public List<String> getAllUsers() {
     try {
-      return githubApi.getAllUsers().execute().body().get("login").getAsString();
+        List<JsonObject> response = githubApi.getAllUsers().execute().body();
+        return response.stream()
+                .map(jOb -> jOb.get("login").getAsString())
+                .limit(10)
+                .collect(Collectors.toList());
     } catch (IOException e) {
       e.printStackTrace();
     }
-    return "";
+    return List.of();
   }
 
   public String getOneUser(String username) {

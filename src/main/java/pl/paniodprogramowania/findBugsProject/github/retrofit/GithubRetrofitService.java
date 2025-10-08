@@ -20,9 +20,9 @@ public class GithubRetrofitService implements GithubService {
     @Override
     public List<String> getAllUsers() {
         try {
-            List<JsonObject> response = githubApi.getAllUsers().execute().body();
+            List<GitHubResponse> response = githubApi.getAllUsers().execute().body();
             return response.stream()
-                    .map(jOb -> jOb.get("login").getAsString())
+                    .map(obj -> obj.getLogin())
                     .limit(10)
                     .collect(Collectors.toList());
         } catch (IOException e) {
@@ -34,11 +34,7 @@ public class GithubRetrofitService implements GithubService {
     @Override
     public GitHubResponse getOneUser(String username) {
         try {
-            JsonObject body = githubApi.getUser(username).execute().body();
-            String login = body.get("login").getAsString();
-            long id = body.get("id").getAsLong();
-            return GitHubResponse.builder().id(id).login(login).build();
-
+            return githubApi.getUser(username).execute().body();
         } catch (IOException e) {
             e.printStackTrace();
         }

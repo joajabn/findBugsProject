@@ -6,15 +6,17 @@ import java.util.stream.Collectors;
 
 import com.google.gson.JsonObject;
 import org.springframework.stereotype.Service;
+import pl.paniodprogramowania.findBugsProject.services.GithubService;
 
 @Service
-public class GithubService {
+public class GithubRetrofitService implements GithubService {
   private final GithubApi githubApi;
 
-  public GithubService(GithubApi githubApi) {
+  public GithubRetrofitService(GithubApi githubApi) {
     this.githubApi = githubApi;
   }
 
+  @Override
   public List<String> getAllUsers() {
     try {
         List<JsonObject> response = githubApi.getAllUsers().execute().body();
@@ -28,6 +30,7 @@ public class GithubService {
     return List.of();
   }
 
+  @Override
   public String getOneUser(String username) {
     try {
       return githubApi.getUser(username).execute().body().get("login").getAsString();

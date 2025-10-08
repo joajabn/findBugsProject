@@ -1,10 +1,12 @@
-package pl.paniodprogramowania.findBugsProject.restClient;
+package pl.paniodprogramowania.findBugsProject.github.restClient;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+import pl.paniodprogramowania.findBugsProject.github.dtos.GitHubResponse;
 import pl.paniodprogramowania.findBugsProject.services.GithubService;
 
 import java.io.IOException;
@@ -43,20 +45,19 @@ public class GitHubRestClientService implements GithubService {
 
     }
 
-    @Override //todo
-    public String getOneUser(String username) {
-        String body = restClient.get()
-                .uri("/users/{username}", username)
-                .retrieve()
-                .body(String.class);
+    @Override
+    public GitHubResponse getOneUser(String username) {
 
 
-
-        try{
+        try {
+            return restClient.get()
+                    .uri("/users/{username}", username)
+                    .retrieve()
+                    .body(GitHubResponse.class);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "";
+        return GitHubResponse.builder().build();
     }
 }

@@ -1,4 +1,4 @@
-package pl.paniodprogramowania.findBugsProject.retrofit;
+package pl.paniodprogramowania.findBugsProject.github.retrofit;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

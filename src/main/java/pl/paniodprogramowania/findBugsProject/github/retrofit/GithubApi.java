@@ -1,4 +1,4 @@
-package pl.paniodprogramowania.findBugsProject.retrofit;
+package pl.paniodprogramowania.findBugsProject.github.retrofit;
 
 import com.google.gson.JsonObject;
 import retrofit2.Call;

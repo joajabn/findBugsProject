@@ -9,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestClient;
-import pl.paniodprogramowania.findBugsProject.restClient.GitHubRestClientService;
-import pl.paniodprogramowania.findBugsProject.retrofit.GithubRetrofitService;
+import pl.paniodprogramowania.findBugsProject.github.dtos.GitHubResponse;
+import pl.paniodprogramowania.findBugsProject.github.restClient.GitHubRestClientService;
+import pl.paniodprogramowania.findBugsProject.github.retrofit.GithubRetrofitService;
 import pl.paniodprogramowania.findBugsProject.services.GithubService;
 
 @RestController
@@ -19,7 +19,7 @@ public class GithubController {
     private final GithubService githubService;
 
     public GithubController(
-            @Autowired GitHubRestClientService githubService
+            @Autowired GithubRetrofitService githubService
     ) {
         this.githubService = githubService;
     }
@@ -35,9 +35,10 @@ public class GithubController {
     }
 
     @GetMapping(path = "/users/{username}")
-    public ResponseEntity<String> getAll(@PathVariable("username") String username) throws IOException {
+    public ResponseEntity<GitHubResponse> getAll(@PathVariable("username") String username) throws IOException {
+        GitHubResponse oneUser = githubService.getOneUser(username);
         return new ResponseEntity<>(
-                githubService.getOneUser(username),
+                oneUser,
                 HttpStatus.OK
         );
     }

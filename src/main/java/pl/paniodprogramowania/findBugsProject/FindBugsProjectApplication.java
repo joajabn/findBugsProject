@@ -17,5 +17,4 @@ public class FindBugsProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FindBugsProjectApplication.class, args);
 	}
-
 }

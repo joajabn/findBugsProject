@@ -42,7 +42,7 @@ public class DancerEntity {
     @Enumerated(EnumType.STRING)
     private PreferredDance preferredDance;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "primaballerina")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "primaballerina")
     private List<DancePlayEntity> dancePlays;
 
 }

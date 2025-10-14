@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.google.gson.JsonObject;
 import org.springframework.stereotype.Service;
 import pl.paniodprogramowania.findBugsProject.github.dtos.GitHubResponse;
-import pl.paniodprogramowania.findBugsProject.services.GithubService;
+import pl.paniodprogramowania.findBugsProject.github.GithubService;
 
 @Service
 public class GithubRetrofitService implements GithubService {

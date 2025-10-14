@@ -1,15 +1,13 @@
 package pl.paniodprogramowania.findBugsProject.github.restClient;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import pl.paniodprogramowania.findBugsProject.github.dtos.GitHubResponse;
-import pl.paniodprogramowania.findBugsProject.services.GithubService;
+import pl.paniodprogramowania.findBugsProject.github.GithubService;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;

@@ -1,4 +1,4 @@
-package pl.paniodprogramowania.findBugsProject.services;
+package pl.paniodprogramowania.findBugsProject.github;
 
 import pl.paniodprogramowania.findBugsProject.github.dtos.GitHubResponse;
 

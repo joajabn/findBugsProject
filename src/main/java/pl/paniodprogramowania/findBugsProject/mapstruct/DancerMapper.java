@@ -14,32 +14,34 @@ import pl.paniodprogramowania.findBugsProject.model.Dancer;
 @Mapper(componentModel = "spring")
 public interface DancerMapper {
 
-  @Mappings(
-      {
-          @Mapping(source = "dancerId", target = "id"),
-          @Mapping(source = "firstName", target = "firstName"),
-          @Mapping(source = "lastName", target = "lastName"),
-          @Mapping(source = "preferredDance", target = "preferredDance")
+    @Mappings(
+            {
+                    @Mapping(source = "dancerId", target = "id"),
+                    @Mapping(source = "firstName", target = "firstName"),
+                    @Mapping(source = "lastName", target = "lastName"),
+                    @Mapping(source = "preferredDance", target = "preferredDance"),
+                    @Mapping(source = "dancePlays", target = "plays")
 
-      })
-  Dancer toDancer(DancerEntity dancerDocument);
+            })
+    Dancer toDancer(DancerEntity dancerDocument);
 
-  @Mappings(
-      {
-          @Mapping(source = "dancePlayId", target = "id"),
-          @Mapping(source = "title", target = "title"),
-          @Mapping(source = "primaballerina", target = "primaballerina")
-      })
-  DancePlay toDancePlay(DancePlayEntity dancerDocument);
+    @Mappings(
+            {
+                    @Mapping(source = "dancePlayId", target = "id"),
+                    @Mapping(source = "title", target = "title"),
+                    @Mapping(source = "primaballerina", target = "primaballerina")
+            })
+    DancePlay toDancePlay(DancePlayEntity dancerDocument);
 
-  @Mappings(
-      {
-          @Mapping(source = "id", target = "id"),
-          @Mapping(source = "firstName", target = "firstName"),
-          @Mapping(source = "lastName", target = "lastName"),
-          @Mapping(source = "preferredDance", target = "preferredDance")
-      })
-  DancerResponse toDancerResponse(Dancer dancerDocument);
+    @Mappings(
+            {
+                    @Mapping(source = "id", target = "id"),
+                    @Mapping(source = "firstName", target = "firstName"),
+                    @Mapping(source = "lastName", target = "lastName"),
+                    @Mapping(source = "preferredDance", target = "preferredDance"),
+                    @Mapping(source = "plays", target = "plays")
+            })
+    DancerResponse toDancerResponse(Dancer dancerDocument);
 
 }
 

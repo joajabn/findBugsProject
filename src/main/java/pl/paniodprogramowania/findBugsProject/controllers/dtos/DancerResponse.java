@@ -5,6 +5,9 @@ import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 
+
+import java.util.List;
+
 @Builder
 public record DancerResponse(
     @Schema(requiredMode = REQUIRED, name = "dancerId")
@@ -14,5 +17,8 @@ public record DancerResponse(
     @Schema(requiredMode = REQUIRED, name = "lastName", minLength = 3)
     String lastName,
     @Schema(requiredMode = REQUIRED, name = "preferredDance", minLength = 3, enumAsRef = true)
-    PreferredDance preferredDance) {
+    PreferredDance preferredDance,
+    @Schema(requiredMode = REQUIRED, name = "plays")
+    List<DancePlayWithoutDancer> plays)
+{
 }

@@ -1,5 +1,6 @@
 package pl.paniodprogramowania.findBugsProject.github.restClient;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -9,8 +10,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Configuration
 public class RestClientConfiguration {
 
+    @Value("${api.github.url}")
+    private String githubUrl;
+
     @Bean
     public RestClient restClient() {
-        return RestClient.create("https://api.github.com/");
+        return RestClient.create(githubUrl);
     }
 }

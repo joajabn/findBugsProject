@@ -1,4 +1,4 @@
 FROM eclipse-temurin:21-jdk-jammy
 COPY . .
 RUN ./gradlew bootJar -x test
-ENTRYPOINT java -Dspring.profiles.active=${PROFILES} -jar build/libs/findBugsProject-0.0.1-SNAPSHOT.jar
+ENTRYPOINT java -Dspring.profiles.active=${PROFILES} -Dencryptor.password.asia=${PASSWORD} -jar build/libs/findBugsProject-0.0.1-SNAPSHOT.jar

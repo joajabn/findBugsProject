@@ -1,0 +1,12 @@
+services:
+  find-bugs-app:
+    build:
+      context: ../..
+      dockerfile: infrastructure/findBugsSolution/application/Dockerfile
+    environment:
+#      USERNAME: ${USER}
+#      PASSWORD: ${PASS}
+      ENCRYPTOR_PASSWORD: ${ENC_PASS}
+    container_name: find-bugs-app-container
+    ports:
+      - 8080:8080
